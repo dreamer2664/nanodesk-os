@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# NanoDesk Chrome Launcher (low-RAM & container-safe)
+CHROME_BIN=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+if [ -z "$CHROME_BIN" ]; then
+  echo "Chromium/Chrome not found."
+  exit 1
+fi
+
+FLAGS="--no-first-run --disable-dev-shm-usage --disable-background-networking --disable-sync"
+if [ "$(id -u)" -eq 0 ] || [ -f /.dockerenv ]; then
+  FLAGS="$FLAGS --no-sandbox --disable-gpu-sandbox"
+fi
+
+exec "$CHROME_BIN" $FLAGS "$@"

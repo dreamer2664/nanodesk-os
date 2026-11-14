@@ -1,0 +1,41 @@
+# NanoDesk Tint2 Panel (Catppuccin Mocha)
+rounded = 6
+border_width = 0
+background_color = #181825 95
+border_color = #313244 100
+
+panel_items = LTSC
+panel_size = 100% 36
+panel_margin = 0 0
+panel_padding = 8 4 8
+panel_background_id = 1
+panel_position = bottom center horizontal
+panel_layer = top
+panel_dock = 0
+
+# Launchers
+launcher_padding = 8 2 10
+launcher_background_id = 0
+launcher_icon_size = 22
+launcher_item_app = /usr/share/applications/nanodesk-chrome.desktop
+launcher_item_app = /usr/share/applications/nanodesk-git.desktop
+launcher_item_app = /usr/share/applications/nanodesk-terminal.desktop
+launcher_item_app = /usr/share/applications/pcmanfm.desktop
+
+# Taskbar
+taskbar_mode = single_desktop
+taskbar_padding = 4 2 6
+taskbar_background_id = 0
+task_font = Sans 10
+task_font_color = #cdd6f4 100
+task_active_font_color = #89b4fa 100
+
+# System Tray
+systray_padding = 4 2 4
+systray_icon_size = 20
+
+# Clock
+time1_format = %H:%M  %b %d
+time1_font = Sans Bold 10
+clock_font_color = #cdd6f4 100
+clock_padding = 8 2

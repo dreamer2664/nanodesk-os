@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1e1e2e">
+
+    <!-- Top Status Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:background="#181825">
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Disconnected — Tap Connect"
+            android:textColor="#cdd6f4"
+            android:textSize="13sp"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:text="Connect"
+            android:textSize="12sp"
+            android:backgroundTint="#89b4fa"
+            android:textColor="#11111b" />
+    </LinearLayout>
+
+    <!-- Live Linux Screen View -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#11111b">
+
+        <ImageView
+            android:id="@+id/ivScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:contentDescription="Remote Screen" />
+    </FrameLayout>
+
+    <!-- Bottom Control Bar -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#181825"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <Button
+                android:id="@+id/btnOverlay"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Overlay Msg"
+                android:textSize="12sp"
+                android:layout_marginRight="6dp"
+                android:backgroundTint="#f38ba8"
+                android:textColor="#11111b" />
+
+            <Button
+                android:id="@+id/btnKeys"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Keyboard"
+                android:textSize="12sp"
+                android:layout_marginRight="6dp"
+                android:backgroundTint="#313244"
+                android:textColor="#cdd6f4" />
+
+            <Button
+                android:id="@+id/btnChrome"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Chrome"
+                android:textSize="12sp"
+                android:layout_marginRight="6dp"
+                android:backgroundTint="#313244"
+                android:textColor="#cdd6f4" />
+
+            <Button
+                android:id="@+id/btnGit"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Git Sync"
+                android:textSize="12sp"
+                android:layout_marginRight="6dp"
+                android:backgroundTint="#313244"
+                android:textColor="#cdd6f4" />
+
+            <Button
+                android:id="@+id/btnClip"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Clipboard"
+                android:textSize="12sp"
+                android:layout_marginRight="6dp"
+                android:backgroundTint="#313244"
+                android:textColor="#cdd6f4" />
+
+            <Button
+                android:id="@+id/btnShell"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Shell"
+                android:textSize="12sp"
+                android:backgroundTint="#313244"
+                android:textColor="#cdd6f4" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

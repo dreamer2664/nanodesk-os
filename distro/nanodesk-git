@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# NanoDesk GitHub Sync Helper
+set -e
+
+echo "========================================"
+echo "   NanoDesk GitHub Push / Pull Helper   "
+echo "========================================"
+echo "1) Pull latest changes (git pull)"
+echo "2) Commit & Push all changes"
+echo "3) Git Status"
+echo "4) Clone a repository"
+echo "5) Configure GitHub PAT & User"
+echo "6) Exit"
+echo "----------------------------------------"
+read -rp "Choose an option [1-6]: " choice
+
+case "$choice" in
+  1)
+    git pull
+    ;;
+  2)
+    git status -s
+    read -rp "Commit message: " msg
+    [ -z "$msg" ] && msg="Update from NanoDesk"
+    git add -A
+    git commit -m "$msg" || true
+    git push
+    ;;
+  3)
+    git status
+    ;;
+  4)
+    read -rp "Repo URL: " url
+    git clone "$url"
+    ;;
+  5)
+    read -rp "GitHub Username: " gh_user
+    read -rp "GitHub Email: " gh_email
+    read -rsp "GitHub PAT: " gh_pat
+    echo ""
+    git config --global user.name "$gh_user"
+    git config --global user.email "$gh_email"
+    git config --global credential.helper store
+    printf "https://%s:%s@github.com\n" "$gh_user" "$gh_pat" > ~/.git-credentials
+    chmod 600 ~/.git-credentials
+    echo "GitHub credentials saved."
+    ;;
+  *)
+    exit 0
+    ;;
+esac
+read -rp "Press Enter to close..."

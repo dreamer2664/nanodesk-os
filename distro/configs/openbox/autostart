@@ -1,0 +1,4 @@
+# NanoDesk Openbox Autostart
+xsetroot -solid "#1e1e2e" &
+tint2 &
+/usr/local/bin/nanodesk-bridge &
