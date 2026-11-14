@@ -65,7 +65,11 @@ public class MainActivity extends Activity {
         String savedPort = prefs.getString("port", "8765");
         authToken = prefs.getString("token", "");
         if (!savedHost.isEmpty()) {
-            baseUrl = "http://" + savedHost + ":" + savedPort;
+            if (savedHost.startsWith("http://") || savedHost.startsWith("https://")) {
+                baseUrl = savedHost.replaceAll("/+$", "");
+            } else {
+                baseUrl = "http://" + savedHost + ":" + savedPort;
+            }
         }
 
         btnConnect.setOnClickListener(v -> showConnectDialog());
@@ -189,12 +193,12 @@ public class MainActivity extends Activity {
         layout.setPadding(40, 24, 40, 12);
 
         EditText etHost = new EditText(this);
-        etHost.setHint("Linux IP or Hostname (e.g. 192.168.1.50)");
+        etHost.setHint("IP (192.168.1.50) or URL (https://...)");
         etHost.setText(prefs.getString("host", ""));
         layout.addView(etHost);
 
         EditText etPort = new EditText(this);
-        etPort.setHint("Port (default 8765)");
+        etPort.setHint("Port (8765, ignored for https://)");
         etPort.setInputType(InputType.TYPE_CLASS_NUMBER);
         etPort.setText(prefs.getString("port", "8765"));
         layout.addView(etPort);
@@ -213,7 +217,11 @@ public class MainActivity extends Activity {
                     if (port.isEmpty()) port = "8765";
                     authToken = etToken.getText().toString().trim();
                     prefs.edit().putString("host", host).putString("port", port).putString("token", authToken).apply();
-                    baseUrl = "http://" + host + ":" + port;
+                    if (host.startsWith("http://") || host.startsWith("https://")) {
+                        baseUrl = host.replaceAll("/+$", "");
+                    } else {
+                        baseUrl = "http://" + host + ":" + port;
+                    }
                     startStreaming();
                 })
                 .setNegativeButton("Cancel", null)
